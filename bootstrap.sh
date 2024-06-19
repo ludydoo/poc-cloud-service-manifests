@@ -23,9 +23,14 @@ EOF
 if [ -z "$(oc get ns cloud-service-ci -o name)" ]; then
   oc create ns cloud-service-ci
 fi
+
 if [ -z "$(oc get ns cloud-service -o name)" ]; then
   oc create ns cloud-service
 fi
+
+# Label namespaces managed by ArgoCD
+oc label ns cloud-service-ci argocd.argoproj.io/managed-by=openshift-gitops
+oc label ns cloud-service argocd.argoproj.io/managed-by=openshift-gitops
 
 # Create webhook secrets
 if [ -z "$(oc get secret -n cloud-service-ci generic-webhook-secret -o name)" ]; then
