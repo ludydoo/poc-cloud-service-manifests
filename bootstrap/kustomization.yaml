@@ -1,0 +1,22 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: "cloud-service"
+spec:
+  runPolicy: "Serial"
+  triggers:
+    - type: "ImageChange"
+  source:
+    git:
+      uri: "https://github.com/ludydoo/poc-cloud-service"
+  strategy:
+    sourceStrategy:
+      from:
+        kind: "ImageStreamTag"
+        name: "ruby-20-centos7:latest"
+  output:
+    to:
+      kind: "ImageStreamTag"
+      name: "poc-cloud-service:latest"
+  postCommit:
+    script: "bundle exec rake test"
