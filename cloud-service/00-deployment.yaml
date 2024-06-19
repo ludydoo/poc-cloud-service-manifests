@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: poc-cloud-service
-          image: 'image-registry.openshift-image-registry.svc:5000/cloud-service/poc-cloud-service:latest'
+          image: 'image-registry.openshift-image-registry.svc:5000/cloud-service-ci/cloud-service:latest'
           resources: {}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
