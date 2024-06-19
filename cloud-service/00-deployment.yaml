@@ -10,12 +10,6 @@ metadata:
     image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"poc-cloud-service:latest","namespace":"cloud-service"},"fieldPath":"spec.template.spec.containers[?(@.name==\"poc-cloud-service\")].image","paused":"false"}]'
   name: poc-cloud-service
   namespace: cloud-service
-  labels:
-    app: poc-cloud-service
-    app.kubernetes.io/component: poc-cloud-service
-    app.kubernetes.io/instance: poc-cloud-service
-    app.kubernetes.io/name: poc-cloud-service
-    app.kubernetes.io/part-of: poc-cloud-service-app
 spec:
   replicas: 2
   selector:
