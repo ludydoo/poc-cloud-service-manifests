@@ -6,7 +6,6 @@ metadata:
     app.openshift.io/route-disabled: 'false'
     app.openshift.io/vcs-ref: ''
     app.openshift.io/vcs-uri: 'https://github.com/ludydoo/poc-cloud-service'
-    deployment.kubernetes.io/revision: '1'
   name: poc-cloud-service
   namespace: cloud-service
 spec:
