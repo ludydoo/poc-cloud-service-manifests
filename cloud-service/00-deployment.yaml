@@ -6,6 +6,7 @@ metadata:
     app.openshift.io/route-disabled: 'false'
     app.openshift.io/vcs-ref: ''
     app.openshift.io/vcs-uri: 'https://github.com/ludydoo/poc-cloud-service'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"poc-cloud-service:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"poc-cloud-service\")].image"}]'
   name: poc-cloud-service
   namespace: cloud-service
 spec:
