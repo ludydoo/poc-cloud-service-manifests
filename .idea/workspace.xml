@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc">
-      <change beforePath="$PROJECT_DIR$/bootstrap/openshift-pipelines.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/openshift-pipelines.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
