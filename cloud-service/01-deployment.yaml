@@ -27,8 +27,15 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /data
+              name: data
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+      volumes:
+        - name: data
+          configMap:
+            name: data
   strategy:
     type: RollingUpdate
     rollingUpdate:

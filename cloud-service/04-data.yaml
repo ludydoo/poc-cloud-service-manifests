@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data
+  namespace: cloud-service
+data:
+  tenants: |
+    - id: tenant-1
+    - id: tenant-2
+    - id: tenant-3
