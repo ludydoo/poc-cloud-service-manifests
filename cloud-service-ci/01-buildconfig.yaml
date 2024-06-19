@@ -12,7 +12,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: poc-cloud-service:latest
+      name: cloud-service:latest
   postCommit: {}
   resources: {}
   runPolicy: Serial
