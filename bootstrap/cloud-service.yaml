@@ -14,3 +14,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-operators
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/spec/containers/0/image
