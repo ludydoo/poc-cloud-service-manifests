@@ -19,4 +19,21 @@ spec:
     namespace: default
 EOF
 
-oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n
+# Create namespaces
+if [ -z "$(oc get ns cloud-service-ci -o name)" ]; then
+  oc create ns cloud-service-ci
+fi
+if [ -z "$(oc get ns cloud-service -o name)" ]; then
+  oc create ns cloud-service
+fi
+
+# Create webhook secrets
+if [ -z "$(oc get secret -n cloud-service-ci generic-webhook-secret -o name)" ]; then
+  oc create secret generic generic-webhook-secret -n cloud-service-ci --from-literal=WebHookSecretKey=$(openssl rand -hex 20)
+fi
+if [ -z "$(oc get secret -n cloud-service-ci github-webhook-secret -o name)" ]; then
+  oc create secret generic github-webhook-secret -n cloud-service-ci --from-literal=WebHookSecretKey=$(openssl rand -hex 20)
+fi
+
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n cloud-service-ci
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n cloud-service

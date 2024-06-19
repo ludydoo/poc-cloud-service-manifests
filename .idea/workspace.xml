@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc">
-      <change afterPath="$PROJECT_DIR$/bootstrap/03-cloud-service.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cloud-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/02-cloud-service-ci.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/kustomization.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/kustomization.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/openshift-pipelines.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/01-openshift-pipelines.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-service-ci/00-imagestream.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-service-ci/00-imagestream.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-service-ci/01-buildconfig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-service-ci/01-buildconfig.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -31,10 +31,10 @@ spec:
     - type: ConfigChange
     - generic:
         secretReference:
-          name: poc-cloud-service-generic-webhook-secret
+          name: generic-webhook-secret
       type: Generic
     - github:
         secretReference:
-          name: poc-cloud-service-github-webhook-secret
+          name: github-webhook-secret
       type: GitHub
 ---
