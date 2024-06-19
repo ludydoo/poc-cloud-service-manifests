@@ -2,3 +2,5 @@ resources:
   - ./01-deployment.yaml
   - ./02-service.yaml
   - ./03-route.yaml
+  - ./04-data.yaml
+  - ./05-rbac.yaml
