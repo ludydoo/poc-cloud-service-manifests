@@ -4,14 +4,8 @@ metadata:
   annotations:
     app.openshift.io/vcs-ref: ""
     app.openshift.io/vcs-uri: https://github.com/ludydoo/poc-cloud-service
-  labels:
-    app: poc-cloud-service
-    app.kubernetes.io/component: poc-cloud-service
-    app.kubernetes.io/instance: poc-cloud-service
-    app.kubernetes.io/name: poc-cloud-service
-    app.kubernetes.io/part-of: poc-cloud-service-app
-  name: poc-cloud-service
-  namespace: cloud-service
+  name: cloud-service
+  namespace: cloud-service-ci
 spec:
   lookupPolicy:
     local: false

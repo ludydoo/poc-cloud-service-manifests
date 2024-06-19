@@ -1,3 +1,4 @@
 resources:
-  - ./openshift-pipelines.yaml
-  - ./cloud-service.yaml
+  - ./01-openshift-pipelines.yaml
+  - ./02-cloud-service-ci.yaml
+  - ./03-cloud-service.yaml
