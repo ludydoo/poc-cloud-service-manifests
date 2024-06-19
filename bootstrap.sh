@@ -5,9 +5,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstrap
-  namespace: default
+  namespace: openshift-gitops
 spec:
   project: default
+  syncPolicy:
+    automated: {}
   source:
     repoURL: https://github.com/ludydoo/poc-cloud-service-manifests
     targetRevision: HEAD
