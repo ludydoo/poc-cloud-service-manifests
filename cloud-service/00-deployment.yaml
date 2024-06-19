@@ -7,7 +7,6 @@ metadata:
     app.openshift.io/vcs-ref: ''
     app.openshift.io/vcs-uri: 'https://github.com/ludydoo/poc-cloud-service'
     deployment.kubernetes.io/revision: '1'
-    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"poc-cloud-service:latest","namespace":"cloud-service"},"fieldPath":"spec.template.spec.containers[?(@.name==\"poc-cloud-service\")].image","paused":"false"}]'
   name: poc-cloud-service
   namespace: cloud-service
 spec:
