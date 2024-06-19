@@ -20,6 +20,7 @@ spec:
         app: poc-cloud-service
         deployment: poc-cloud-service
     spec:
+      serviceAccountName: cloud-service
       containers:
         - name: poc-cloud-service
           image: 'image-registry.openshift-image-registry.svc:5000/cloud-service-ci/cloud-service:latest'
