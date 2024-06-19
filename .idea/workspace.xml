@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc">
-      <change afterPath="$PROJECT_DIR$/openshift-pipelines/02-operator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bootstrap/cloud-service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service-ci/00-imagestream.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service-ci/01-buildconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service/00-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service/01-service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service/02-route.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service/kustomization.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openshift-pipelines/01-subscription.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openshift-pipelines/01-subscription.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openshift-pipelines/kustomization.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openshift-pipelines/kustomization.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,12 +58,18 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/anon/github.com/ludydoo/poc-cloud-service-manifests",
+    "last_opened_file_path": "/Users/anon/github.com/ludydoo/poc-cloud-service-manifests/bootstrap",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bootstrap" />
+      <recent name="$PROJECT_DIR$/cloud-service" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

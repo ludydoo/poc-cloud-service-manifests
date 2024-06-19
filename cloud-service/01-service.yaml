@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: ""
+    app.openshift.io/vcs-uri: https://github.com/ludydoo/poc-cloud-service
+  labels:
+    app: poc-cloud-service
+    app.kubernetes.io/component: poc-cloud-service
+    app.kubernetes.io/instance: poc-cloud-service
+    app.kubernetes.io/name: poc-cloud-service
+    app.kubernetes.io/part-of: poc-cloud-service-app
+  name: poc-cloud-service
+  namespace: cloud-service
+spec:
+  ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: poc-cloud-service
+    deployment: poc-cloud-service

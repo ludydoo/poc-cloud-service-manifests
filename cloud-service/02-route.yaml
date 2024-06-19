@@ -1,0 +1,22 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: poc-cloud-service
+    app.kubernetes.io/component: poc-cloud-service
+    app.kubernetes.io/instance: poc-cloud-service
+    app.kubernetes.io/name: poc-cloud-service
+    app.kubernetes.io/part-of: poc-cloud-service-app
+  name: poc-cloud-service
+  namespace: cloud-service
+spec:
+  port:
+    targetPort: 8080-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: poc-cloud-service
+    weight: 100
+  wildcardPolicy: None
