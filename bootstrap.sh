@@ -29,6 +29,7 @@ if [ -z "$(oc get ns cloud-service -o name)" ]; then
 fi
 
 # Label namespaces managed by ArgoCD
+# This grants permissions to ArgoCD to deploy applications to these namespaces
 oc label ns cloud-service-ci argocd.argoproj.io/managed-by=openshift-gitops
 oc label ns cloud-service argocd.argoproj.io/managed-by=openshift-gitops
 
@@ -43,5 +44,3 @@ fi
 # Allow cloud-service to pull images from cloud-service-ci
 oc policy add-role-to-user system:image-puller system:serviceaccount:cloud-service:default --namespace=cloud-service-ci
 
-
-oc adm policy remove-role-from-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n cloud-service
