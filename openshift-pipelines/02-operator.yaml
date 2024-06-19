@@ -1,0 +1,5 @@
+apiVersion: operators.coreos.com/v1
+kind: Operator
+metadata:
+  name: openshift-pipelines-operator-rh.openshift-operators
+spec: {}
