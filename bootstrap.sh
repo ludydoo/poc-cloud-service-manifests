@@ -43,3 +43,6 @@ oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:open
 
 # Allow cloud-service to pull images from cloud-service-ci
 oc policy add-role-to-user system:image-puller system:serviceaccount:cloud-service:default --namespace=cloud-service-ci
+
+
+oc adm policy remove-role-from-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n cloud-service
