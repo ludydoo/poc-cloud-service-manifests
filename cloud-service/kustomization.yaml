@@ -1,4 +1,5 @@
 resources:
-  - ./00-deployment.yaml
-  - ./01-service.yaml
-  - ./02-route.yaml
+  - ./00-namespace.yaml
+  - ./01-deployment.yaml
+  - ./02-service.yaml
+  - ./03-route.yaml
