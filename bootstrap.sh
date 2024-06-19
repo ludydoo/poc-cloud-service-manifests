@@ -40,12 +40,6 @@ if [ -z "$(oc get secret -n cloud-service-ci github-webhook-secret -o name)" ]; 
   oc create secret generic github-webhook-secret -n cloud-service-ci --from-literal=WebHookSecretKey=$(openssl rand -hex 20)
 fi
 
-# Allow ArgoCD to deploy in cloud-service-ci
-oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n cloud-service-ci
-
-# Allow ArgoCD to deploy in cloud-service
-oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n cloud-service
-
 # Allow cloud-service to pull images from cloud-service-ci
 oc policy add-role-to-user system:image-puller system:serviceaccount:cloud-service:default --namespace=cloud-service-ci
 
