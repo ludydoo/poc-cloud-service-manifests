@@ -8,4 +8,10 @@ data:
     - id: tenant1
     - id: tenant2
     - id: tenant3
-      path: tenant-manifests-alt
+      source:
+        repoUrl: https://github.com/ludydoo/poc-cloud-service-manifests
+        path: tenant-manifests-alt
+        helm:
+          values: |
+            serviceAccount:
+              create: false
