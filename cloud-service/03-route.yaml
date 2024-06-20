@@ -5,7 +5,7 @@ metadata:
   namespace: cloud-service
 spec:
   port:
-    targetPort: 8080-tcp
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge

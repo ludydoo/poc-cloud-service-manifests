@@ -8,10 +8,14 @@ metadata:
   namespace: cloud-service
 spec:
   ports:
-    - name: 8080-tcp
+    - name: http
       port: 8080
       protocol: TCP
-      targetPort: 8080
+      targetPort: http
+    - name: grpc
+      port: 8080
+      protocol: TCP
+      targetPort: grpc
   selector:
     app: poc-cloud-service
     deployment: poc-cloud-service
