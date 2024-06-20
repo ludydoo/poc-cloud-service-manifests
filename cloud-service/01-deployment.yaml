@@ -10,7 +10,7 @@ metadata:
   name: poc-cloud-service
   namespace: cloud-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: poc-cloud-service
