@@ -37,7 +37,7 @@ data:
   db-init.sh: |
     #!/bin/bash    
     # Script to create the db-secret if it doesn't exist
-    db_secret=$(openssl rand -base64 32)    
+    db_secret=$(openssl rand -hex 64)    
     db_user="dbuser-$(openssl rand -hex 4)"
     db="cloud-service"
     if kubectl get secret db-secret -n cloud-service; then
