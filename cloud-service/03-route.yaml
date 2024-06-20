@@ -1,11 +1,28 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: poc-cloud-service
+  name: api
   namespace: cloud-service
 spec:
   port:
     targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: poc-cloud-service
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: grpc-api
+  namespace: cloud-service
+spec:
+  port:
+    targetPort: grpc
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
