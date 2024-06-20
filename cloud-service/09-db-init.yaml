@@ -33,6 +33,7 @@ spec:
         - name: db-init
           configMap:
             name: db-init
+            defaultMode: 0744
       containers:
         - name: db-init
           image: bitnami/kubectl:latest
