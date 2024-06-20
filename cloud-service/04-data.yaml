@@ -8,3 +8,4 @@ data:
     - id: tenant1
     - id: tenant2
     - id: tenant3
+      path: tenant-manifests-alt
