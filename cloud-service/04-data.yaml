@@ -5,5 +5,6 @@ metadata:
   namespace: cloud-service
 data:
   tenants: |
-    - id: tenant-1
-    - id: tenant-2
+    - id: tenant1
+    - id: tenant2
+    - id: tenant3
