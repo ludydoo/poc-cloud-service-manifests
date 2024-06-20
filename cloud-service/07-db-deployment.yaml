@@ -17,6 +17,9 @@ spec:
       containers:
         - name: db
           image: postgres:16
+          envFrom:
+            - secretRef:
+                name: db-secret
           ports:
             - containerPort: 5432
               protocol: TCP

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-init
+data:
+  db-init.sh: |
+    #!/bin/bash    
+    # Script to create the db-secret if it doesn't exist
+    db_secret=$(openssl rand -base64 32)    
+    db_user="dbuser-$(openssl rand -hex 4)"
+    db="cloud-service"
+    if kubectl get secret db-secret -n cloud-service; then
+        echo "Secret already exists"
+        exit 0
+    fi    
+    kubectl create secret generic db-secret \
+      -n ${NAMESPACE} \
+      --from-literal=POSTGRES_PASSWORD="${db_secret}" \
+      --from-literal=POSTGRES_USER="${db_user}" \
+      --from-literal=POSTGRES_DB="${db}"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-init
+  namespace: cloud-service
+spec:
+  template:
+    spec:
+      volumes:
+        - name: db-init
+          configMap:
+            name: db-init
+      containers:
+        - name: db-init
+          image: bitnami/kubectl:latest
+          volumeMounts:
+            - mountPath: /script/db-init.sh
+              name: db-init
+              subPath: db-init.sh
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          command: [ "/bin/bash", "-c" ]
+          args: [ "/script/db-init.sh" ]

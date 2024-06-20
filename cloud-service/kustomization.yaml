@@ -7,3 +7,4 @@ resources:
   - ./06-db-pvc.yaml
   - ./07-db-deployment.yaml
   - ./08-db-service.yaml
+  - ./09-db-init.yaml
