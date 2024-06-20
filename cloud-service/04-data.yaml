@@ -13,6 +13,4 @@ data:
         helm:
           values: |
             ingress:
-              enabled: true
-            serviceAccount:
-              create: false
+              enabled: false
