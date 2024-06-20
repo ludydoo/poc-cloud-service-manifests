@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc">
+      <change afterPath="$PROJECT_DIR$/cloud-service/06-db-pvc.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service/07-db-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-service/08-db-service.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-service/04-data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-service/04-data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-service/kustomization.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-service/kustomization.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +55,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/anon/github.com/ludydoo/poc-cloud-service-manifests",
+    "last_opened_file_path": "/Users/anon/github.com/ludydoo/poc-cloud-service-manifests/cloud-service",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -60,8 +63,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/cloud-service" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/bootstrap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

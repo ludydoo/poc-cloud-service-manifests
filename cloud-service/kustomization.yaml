@@ -4,3 +4,6 @@ resources:
   - ./03-route.yaml
   - ./04-data.yaml
   - ./05-rbac.yaml
+  - ./06-db-pvc.yaml
+  - ./07-db-deployment.yaml
+  - ./08-db-service.yaml
