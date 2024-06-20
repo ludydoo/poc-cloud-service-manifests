@@ -7,3 +7,4 @@ data:
   tenants: |
     - id: tenant1
     - id: tenant2
+    - id: tenant3
