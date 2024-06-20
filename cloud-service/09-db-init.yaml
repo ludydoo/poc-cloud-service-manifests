@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: db-init
+  namespace: cloud-service
 data:
   db-init.sh: |
     #!/bin/bash    
@@ -23,7 +24,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: db-init
-  namespace: cloud-service
 spec:
   template:
     spec:
