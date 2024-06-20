@@ -34,12 +34,16 @@ spec:
           configMap:
             name: db-init
             defaultMode: 0777
+        - name: workdir
+          emptyDir: {}
       containers:
         - name: db-init
           image: bitnami/kubectl:latest
           volumeMounts:
             - mountPath: /scripts
               name: db-init
+            - mountPath: /workdir
+              name: workdir
           env:
             - name: NAMESPACE
               valueFrom:
@@ -48,5 +52,6 @@ spec:
           command: [ "/bin/bash", "-c" ]
           args:
             - |
-              chmod +x /script/db-init.sh
-              /script/db-init.sh
+              cp /scripts/db-init.sh /workdir/db-init.sh
+              chmod +x /workdir/db-init.sh
+              /workdir/db-init.sh
