@@ -47,4 +47,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
           command: [ "/bin/bash", "-c" ]
-          args: [ "/script/db-init.sh" ]
+          args:
+            - |
+              chmod +x /script/db-init.sh
+              /script/db-init.sh
