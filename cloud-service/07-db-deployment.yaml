@@ -17,15 +17,15 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
-        fsGroup: 1000
         runAsNonRoot: true
       containers:
         - name: db
           image: postgres:16
           securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
             capabilities:
-              drop:
-                - ALL
+              drop: ["ALL"]
           envFrom:
             - secretRef:
                 name: db-secret
