@@ -12,6 +12,6 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: service
+    name: {{ include "tenant-manifests.fullname" . }}
     weight: 100
   wildcardPolicy: None
