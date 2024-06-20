@@ -33,14 +33,13 @@ spec:
         - name: db-init
           configMap:
             name: db-init
-            defaultMode: 0744
+            defaultMode: 0777
       containers:
         - name: db-init
           image: bitnami/kubectl:latest
           volumeMounts:
-            - mountPath: /script/db-init.sh
+            - mountPath: /scripts
               name: db-init
-              subPath: db-init.sh
           env:
             - name: NAMESPACE
               valueFrom:
