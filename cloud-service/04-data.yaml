@@ -9,7 +9,7 @@ data:
     - id: tenant2
     - id: tenant3
       source:
-        repoUrl: https://github.com/ludydoo/poc-cloud-service-manifests
+        repoURL: https://github.com/ludydoo/poc-cloud-service-manifests
         path: tenant-manifests-alt
         helm:
           values: |
