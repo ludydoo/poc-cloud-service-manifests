@@ -49,6 +49,7 @@ spec:
         app: db
         deployment: db
     spec:
+      serviceAccountName: db
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
