@@ -68,6 +68,7 @@ spec:
             defaultMode: 0777
         - name: workdir
           emptyDir: { }
+      serviceAccountName: db-init
       containers:
         - name: db-init
           image: bitnami/kubectl:latest
