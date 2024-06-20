@@ -37,10 +37,4 @@ spec:
         - name: data
           configMap:
             name: data
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
-  revisionHistoryLimit: 10
-  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 2
