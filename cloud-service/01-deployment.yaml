@@ -28,6 +28,9 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: db-secret
           volumeMounts:
             - mountPath: /data
               name: data
