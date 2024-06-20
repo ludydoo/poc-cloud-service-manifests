@@ -12,5 +12,7 @@ data:
         path: tenant-manifests-alt
         helm:
           values: |
+            ingress:
+              enabled: true
             serviceAccount:
               create: false
