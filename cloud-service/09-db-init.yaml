@@ -57,6 +57,9 @@ kind: Job
 metadata:
   name: db-init
   namespace: cloud-service
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
 spec:
   template:
     spec:
