@@ -6,7 +6,7 @@ metadata:
     {{- include "tenant-manifests.labels" . | nindent 4 }}
 spec:
   port:
-    targetPort: 8080-tcp
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
