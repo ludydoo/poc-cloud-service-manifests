@@ -87,16 +87,17 @@ spec:
               echo "Copying manifests to /terraform"
               cp -Lr /manifests/* /terraform
               ls -al /terraform
-              chmod -R 777 /terraform/*              
+              chmod -R 777 /terraform/*
+              
+              export AWS_ACCESS_KEY_ID=${ACCESS_KEY}
+              export AWS_SECRET_ACCESS_KEY=${SECRET_KEY}
+              export AWS_ENDPOINT_URL_S3=${ENDPOINT}
+              export AWS_DEFAULT_REGION=${REGION}
               
               echo "Initializing terraform"
               cd /terraform && \
               terraform init \
-                -backend-config="access_key=${ACCESS_KEY}" \
-                -backend-config="secret_key=${SECRET_KEY}" \
-                -backend-config="endpoint=${ENDPOINT}" \
                 -backend-config="bucket=${BUCKET}" \
-                -backend-config="region=${REGION}" \
                 -backend-config="key=${KEY}" \
                 -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
                 -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
@@ -104,11 +105,7 @@ spec:
                 -backend-config="skip_metadata_api_check=${SKIP_METADATA_API_CHECK}" \
                 -backend-config="use_path_style=${USE_PATH_STYLE}" && \            
               terraform apply -auto-approve \
-                -backend-config="access_key=${ACCESS_KEY}" \
-                -backend-config="secret_key=${SECRET_KEY}" \
-                -backend-config="endpoint=${ENDPOINT}" \
                 -backend-config="bucket=${BUCKET}" \
-                -backend-config="region=${REGION}" \
                 -backend-config="key=${KEY}" \
                 -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
                 -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
