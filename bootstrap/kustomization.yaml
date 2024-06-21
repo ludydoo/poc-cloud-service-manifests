@@ -4,3 +4,4 @@ resources:
   - ./03-cloud-service.yaml
   - ./04-minio-operator.yaml
   - ./05-terraform-state-store.yaml
+  - ./06-cluster-secret-operator.yaml
