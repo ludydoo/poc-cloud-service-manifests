@@ -2,7 +2,7 @@ apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
   name: terraform-state-store
-  namespace: terraform-state-store-store
+  namespace: terraform-state-store
 spec:
   requestAutoCert: true
   exposeServices:
