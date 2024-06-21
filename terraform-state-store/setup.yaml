@@ -59,7 +59,9 @@ data:
     kubectl get secret terraform-state-store-env-configuration -n ${NAMESPACE} || \
     kubectl create secret generic terraform-state-store-env-configuration \
       -n ${NAMESPACE} \
-      --from-literal=config.env="export MINIO_BROWSER=\"on\"\nexport MINIO_ROOT_USER=\"${root_user}\"\nexport MINIO_ROOT_PASSWORD=\"${root_password}\""
+      --from-literal=config.env="export MINIO_BROWSER=\"on\"
+    export MINIO_ROOT_USER=\"${root_user}\"
+    export MINIO_ROOT_PASSWORD=\"${root_password}\""
 ---
 apiVersion: batch/v1
 kind: Job
