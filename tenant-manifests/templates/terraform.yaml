@@ -85,7 +85,7 @@ spec:
               # Copy the manifests to the terraform directory
               # Otherwise readOnlyRootFilesystem will prevent terraform from writing to the directory
               echo "Copying manifests to /terraform"
-              cp -r /manifests/* /terraform
+              cp -Lr /manifests/* /terraform
               ls -al /terraform
               chmod -R 777 /terraform/*              
               
