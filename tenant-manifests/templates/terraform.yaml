@@ -81,6 +81,8 @@ spec:
               value: "true"
             - name: USE_PATH_STYLE
               value: "true"
+            - name: INSECURE
+              value: "true"
 
           command: [ "sh", "-c" ]
           args:
@@ -100,6 +102,7 @@ spec:
               terraform init \
                 -backend-config="bucket=${BUCKET}" \
                 -backend-config="key=${KEY}" \
+                -backend-config="insecure=${INSECURE}" \
                 -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
                 -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
                 -backend-config="skip_requesting_account_id=${SKIP_REQUESTING_ACCOUNT_ID}" \
