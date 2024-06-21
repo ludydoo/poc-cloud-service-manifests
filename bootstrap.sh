@@ -29,7 +29,7 @@ function create_namespaces() {
   done
 }
 
-create_namespaces cloud-service-ci cloud-service minio-operator terraform-state-store cluster-secret-operator
+create_namespaces cloud-service-ci cloud-service minio-operator terraform-state-store cluster-secret-operator argo
 
 # Create webhook secrets
 if [ -z "$(oc get secret -n cloud-service-ci generic-webhook-secret -o name)" ]; then

@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: access-key-init
+  namespace: terraform-state-store
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: access-key-init
+  namespace: terraform-state-store
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "secrets" ]
+    verbs: [ "create", "get", "update" ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: access-key-init
+  namespace: terraform-state-store
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: access-key-init
+subjects:
+  - kind: ServiceAccount
+    name: access-key-init
+    namespace: terraform-state-store
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: access-key-init
+  namespace: terraform-state-store
+data:
+  access-key-init.sh: |
+    #!/bin/bash
+    
+    # Check if an access key already exists
+    mc alias set minio minio "${ACCESS_KEY}" "${SECRET_KEY}"
+    
+    # Create terraform-state bucket if it does not exist
+    mc mb minio/terraform-state
+    
+    # Create an access key if it does not exist
+    exists=$(mc admin user info minio default | grep -c "No user found")
+    
+    if [ $exists -eq 1 ]; then
+      access_key=$(openssl rand -hex 32)
+      secret_key=$(openssl rand -hex 32)
+      mc admin user add minio default "${access_key}" "${secret_key}"
+      
+      # Create the ClusterSecret
+      kubectl get secret terraform-state-store-secret -n ${NAMESPACE} || \
+    
+    fi
+   
+    
+    
+    kubectl get secret terraform-state-store-user-0 -n ${NAMESPACE} || \
+    kubectl create secret generic terraform-state-store-user-0 \
+      -n ${NAMESPACE} \
+      --from-literal=CONSOLE_ACCESS_KEY="${console_access_key}" \
+      --from-literal=CONSOLE_SECRET_KEY="${console_secret_key}"
+    
+    kubectl get secret terraform-state-store-secret -n ${NAMESPACE} || \
+    kubectl create secret generic terraform-state-store-secret \
+      -n ${NAMESPACE} \
+      --from-literal=ACCESS_KEY="${access_key}" \
+      --from-literal=SECRET_KEY="${secret_key}"
+    
+    kubectl get secret terraform-state-store-env-configuration -n ${NAMESPACE} || \
+    kubectl create secret generic terraform-state-store-env-configuration \
+      -n ${NAMESPACE} \
+      --from-literal=config.env="export MINIO_BROWSER=\"on\"
+    export MINIO_ROOT_USER=\"${root_user}\"
+    export MINIO_ROOT_PASSWORD=\"${root_password}\""
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: access-key-init
+  namespace: terraform-state-store
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      volumes:
+        - name: access-key-init
+          configMap:
+            name: access-key-init
+            defaultMode: 0777
+        - name: workdir
+          emptyDir: { }
+      serviceAccountName: access-key-init
+      containers:
+        - name: access-key-init
+          image: minio/mc:latest
+          volumeMounts:
+            - mountPath: /scripts
+              name: access-key-init
+            - mountPath: /workdir
+              name: workdir
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          command: [ "/bin/bash", "-c" ]
+          args:
+            - |
+              cp /scripts/access-key-init.sh /workdir/access-key-init.sh
+              chmod +x /workdir/access-key-init.sh
+              /workdir/access-key-init.sh
