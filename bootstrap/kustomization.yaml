@@ -2,3 +2,4 @@ resources:
   - ./01-openshift-pipelines.yaml
   - ./02-cloud-service-ci.yaml
   - ./03-cloud-service.yaml
+  - ./04-minio-operator.yaml
