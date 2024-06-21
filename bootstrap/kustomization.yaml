@@ -1,4 +1,5 @@
 resources:
+  - ./00-controller-rbac.yaml
   - ./01-openshift-pipelines.yaml
   - ./02-cloud-service-ci.yaml
   - ./03-cloud-service.yaml

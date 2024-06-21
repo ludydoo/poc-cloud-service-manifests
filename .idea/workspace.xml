@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc">
-      <change afterPath="$PROJECT_DIR$/cluster-secret-operator/kustomization.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cluster-secret-operator/rbac.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bootstrap/00-controller-rbac.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/06-cluster-secret-operator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/06-cluster-secret-operator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/kustomization.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/kustomization.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
