@@ -11,6 +11,11 @@ rules:
   - apiGroups: [ "" ]
     resources: [ "secrets" ]
     verbs: [ "get", "list", "create" ]
+  - apiGroups: [ "security.openshift.io" ]
+    resources: [ "securitycontextconstraints" ]
+    verbs: [ "use" ]
+    resourceNames:
+      - nonroot-v2
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -37,6 +42,11 @@ spec:
       backoffLimit: 4
       restartPolicy: OnFailure
       serviceAccountName: terraform
+      securityContext:
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        runAsNonRoot: true
       containers:
         - name: terraform
           image: hashicorp/terraform:1.8.5
@@ -110,6 +120,7 @@ spec:
               mountPath: /terraform
             - name: terraform-manifests
               mountPath: /manifests
+              readOnly: true
       volumes:
         - name: terraform
           emptyDir: { }
