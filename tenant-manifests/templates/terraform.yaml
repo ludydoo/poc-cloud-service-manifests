@@ -83,7 +83,7 @@ spec:
               value: "true"
             - name: INSECURE
               value: "true"
-            - name: TF_VAR_NAMESPACE
+            - name: TF_VAR_namespace
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
