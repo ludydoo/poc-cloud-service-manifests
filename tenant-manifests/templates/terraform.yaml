@@ -74,10 +74,11 @@ spec:
             - |
               # Copy the manifests to the terraform directory
               # Otherwise readOnlyRootFilesystem will prevent terraform from writing to the directory
-              cp -r /manifests/* /terraform            
-              cd /terraform
+              echo "Copying manifests to /terraform"
+              cp -r /manifests/* /terraform         
               
-              # Initialize terraform
+              echo "Initializing terraform"
+              cd /terraform && \              
               terraform init \
                 -backend-config="access_key=${ACCESS_KEY}" \
                 -backend-config="secret_key=${SECRET_KEY}" \
