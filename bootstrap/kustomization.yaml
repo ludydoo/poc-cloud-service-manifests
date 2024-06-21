@@ -6,3 +6,4 @@ resources:
   - ./04-minio-operator.yaml
   - ./05-terraform-state-store.yaml
   - ./06-cluster-secret-operator.yaml
+  - ./07-argo-workflows.yaml
