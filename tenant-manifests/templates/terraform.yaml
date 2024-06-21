@@ -51,21 +51,23 @@ spec:
         - name: terraform
           image: hashicorp/terraform:1.8.5
           env:
-            - name: ACCESS_KEY
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
               secretKeyRef:
                 name: terraform-state-secret
                 key: ACCESS_KEY
-            - name: SECRET_KEY
+            - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: terraform-state-secret
                   key: SECRET_KEY
-            - name: ENDPOINT
+            - name: AWS_EC2_METADATA_DISABLED
+              value: "true"
+            - name: AWS_ENDPOINT_URL_S3
               value: "https://minio.terraform-state-store.svc.cluster.local"
             - name: BUCKET
               value: "terraform-state"
-            - name: REGION
+            - name: AWS_DEFAULT_REGION
               value: "us-east-1"
             - name: KEY
               value: "terraform.tfstate"
@@ -88,11 +90,6 @@ spec:
               cp -Lr /manifests/* /terraform
               ls -al /terraform
               chmod -R 777 /terraform/*
-              
-              export AWS_ACCESS_KEY_ID=${ACCESS_KEY}
-              export AWS_SECRET_ACCESS_KEY=${SECRET_KEY}
-              export AWS_ENDPOINT_URL_S3=${ENDPOINT}
-              export AWS_DEFAULT_REGION=${REGION}
               
               echo "Initializing terraform"
               cd /terraform && \
