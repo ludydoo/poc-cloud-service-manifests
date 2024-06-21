@@ -94,7 +94,7 @@ spec:
               terraform init \
                 -backend-config="access_key=${ACCESS_KEY}" \
                 -backend-config="secret_key=${SECRET_KEY}" \
-                -backend-config="endpoint=${ENDPOINT}" \
+                -backend-config="endpoints.s3=${ENDPOINT}" \
                 -backend-config="bucket=${BUCKET}" \
                 -backend-config="region=${REGION}" \
                 -backend-config="key=${KEY}" \
@@ -106,7 +106,7 @@ spec:
               terraform apply -auto-approve \
                 -backend-config="access_key=${ACCESS_KEY}" \
                 -backend-config="secret_key=${SECRET_KEY}" \
-                -backend-config="endpoint=${ENDPOINT}" \
+                -backend-config="endpoints.s3=${ENDPOINT}" \
                 -backend-config="bucket=${BUCKET}" \
                 -backend-config="region=${REGION}" \
                 -backend-config="key=${KEY}" \
