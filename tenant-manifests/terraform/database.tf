@@ -9,6 +9,14 @@ resource random_pet db_user {
   separator = "-"
 }
 
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
+locals {
+  db_user = "${random_pet.db_user.id}-${random_id.suffix.hex}"
+}
+
 resource kubernetes_secret db_secret {
   metadata {
     name      = "db-secret"
@@ -16,8 +24,8 @@ resource kubernetes_secret db_secret {
   }
   data = {
     POSTGRES_PASSWORD = random_password.db_password.result
-    POSTGRES_USER     = random_pet.db_user.id
+    POSTGRES_USER     = local.db_user
     POSTGRES_DB       = "postgres"
-    DSN               = "postgres://${random_pet.db_user.id}:${random_password.db_password.result}@db.${var.namespace}.svc.cluster.local:5432/postgres?sslmode=disable"
+    DSN               = "postgres://${local.db_user}:${random_password.db_password.result}@db.${var.namespace}.svc.cluster.local:5432/postgres?sslmode=disable"
   }
 }
