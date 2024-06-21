@@ -83,6 +83,10 @@ spec:
               value: "true"
             - name: INSECURE
               value: "true"
+            - name: TF_VAR_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
 
           command: [ "sh", "-c" ]
           args:
