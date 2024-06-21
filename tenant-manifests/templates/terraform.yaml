@@ -76,7 +76,7 @@ spec:
               # Otherwise readOnlyRootFilesystem will prevent terraform from writing to the directory
               echo "Copying manifests to /terraform"
               cp -r /manifests/* /terraform
-              chmod -R 777 /terraform
+              chmod -R 777 /terraform/*
               
               echo "Initializing terraform"
               cd /terraform && \
