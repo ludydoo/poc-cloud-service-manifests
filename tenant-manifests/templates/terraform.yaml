@@ -8,83 +8,84 @@ metadata:
 spec:
   template:
     spec:
-    containers:
-      - name: terraform
-        image: hashicorp/terraform:1.8.5
-        env:
-          - name: ACCESS_KEY
-            valueFrom:
-            secretKeyRef:
-              name: terraform-state-secret
-              key: ACCESS_KEY
-          - name: SECRET_KEY
-            valueFrom:
+      backoffLimit: 4
+      restartPolicy: OnFailure
+      containers:
+        - name: terraform
+          image: hashicorp/terraform:1.8.5
+          env:
+            - name: ACCESS_KEY
+              valueFrom:
               secretKeyRef:
                 name: terraform-state-secret
-                key: SECRET_KEY
-          - name: ENDPOINT
-            value: "https://minio.terraform-state-store.svc.cluster.local"
-          - name: BUCKET
-            value: "terraform-state"
-          - name: REGION
-            value: "us-east-1"
-          - name: KEY
-            value: "terraform.tfstate"
-          - name: SKIP_REGION_VALIDATION
-            value: "true"
-          - name: SKIP_CREDENTIALS_VALIDATION
-            value: "true"
-          - name: SKIP_REQUESTING_ACCOUNT_ID
-            value: "true"
-          - name: SKIP_METADATA_API_CHECK
-            value: "true"
-          - name: USE_PATH_STYLE
-            value: "true"
-        command: [ "sh", "-c" ]
-        args:
-          - |
-            # Copy the manifests to the terraform directory
-            # Otherwise readOnlyRootFilesystem will prevent terraform from writing to the directory
-            cp -r /manifests/* /terraform            
-            cd /terraform
-            
-            # Initialize terraform
-            terraform init \
-              -backend-config="access_key=${ACCESS_KEY}" \
-              -backend-config="secret_key=${SECRET_KEY}" \
-              -backend-config="endpoint=${ENDPOINT}" \
-              -backend-config="bucket=${BUCKET}" \
-              -backend-config="region=${REGION}" \
-              -backend-config="key=${KEY}" \
-              -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
-              -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
-              -backend-config="skip_requesting_account_id=${SKIP_REQUESTING_ACCOUNT_ID}" \
-              -backend-config="skip_metadata_api_check=${SKIP_METADATA_API_CHECK}" \
-              -backend-config="use_path_style=${USE_PATH_STYLE}"
-            
-            # Apply the terraform manifests
-            terraform apply -auto-approve \
-              -backend-config="access_key=${ACCESS_KEY}" \
-              -backend-config="secret_key=${SECRET_KEY}" \
-              -backend-config="endpoint=${ENDPOINT}" \
-              -backend-config="bucket=${BUCKET}" \
-              -backend-config="region=${REGION}" \
-              -backend-config="key=${KEY}" \
-              -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
-              -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
-              -backend-config="skip_requesting_account_id=${SKIP_REQUESTING_ACCOUNT_ID}" \
-              -backend-config="skip_metadata_api_check=${SKIP_METADATA_API_CHECK}" \
-              -backend-config="use_path_style=${USE_PATH_STYLE}"
+                key: ACCESS_KEY
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: terraform-state-secret
+                  key: SECRET_KEY
+            - name: ENDPOINT
+              value: "https://minio.terraform-state-store.svc.cluster.local"
+            - name: BUCKET
+              value: "terraform-state"
+            - name: REGION
+              value: "us-east-1"
+            - name: KEY
+              value: "terraform.tfstate"
+            - name: SKIP_REGION_VALIDATION
+              value: "true"
+            - name: SKIP_CREDENTIALS_VALIDATION
+              value: "true"
+            - name: SKIP_REQUESTING_ACCOUNT_ID
+              value: "true"
+            - name: SKIP_METADATA_API_CHECK
+              value: "true"
+            - name: USE_PATH_STYLE
+              value: "true"
+          command: [ "sh", "-c" ]
+          args:
+            - |
+              # Copy the manifests to the terraform directory
+              # Otherwise readOnlyRootFilesystem will prevent terraform from writing to the directory
+              cp -r /manifests/* /terraform            
+              cd /terraform
+              
+              # Initialize terraform
+              terraform init \
+                -backend-config="access_key=${ACCESS_KEY}" \
+                -backend-config="secret_key=${SECRET_KEY}" \
+                -backend-config="endpoint=${ENDPOINT}" \
+                -backend-config="bucket=${BUCKET}" \
+                -backend-config="region=${REGION}" \
+                -backend-config="key=${KEY}" \
+                -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
+                -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
+                -backend-config="skip_requesting_account_id=${SKIP_REQUESTING_ACCOUNT_ID}" \
+                -backend-config="skip_metadata_api_check=${SKIP_METADATA_API_CHECK}" \
+                -backend-config="use_path_style=${USE_PATH_STYLE}"
+              
+              # Apply the terraform manifests
+              terraform apply -auto-approve \
+                -backend-config="access_key=${ACCESS_KEY}" \
+                -backend-config="secret_key=${SECRET_KEY}" \
+                -backend-config="endpoint=${ENDPOINT}" \
+                -backend-config="bucket=${BUCKET}" \
+                -backend-config="region=${REGION}" \
+                -backend-config="key=${KEY}" \
+                -backend-config="skip_region_validation=${SKIP_REGION_VALIDATION}" \
+                -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
+                -backend-config="skip_requesting_account_id=${SKIP_REQUESTING_ACCOUNT_ID}" \
+                -backend-config="skip_metadata_api_check=${SKIP_METADATA_API_CHECK}" \
+                -backend-config="use_path_style=${USE_PATH_STYLE}"
 
-        volumeMounts:
-          - name: terraform
-            mountPath: /terraform
-          - name: terraform-manifests
-            mountPath: /manifests
-    volumes:
-      - name: terraform
-        emptyDir: { }
-      - name: terraform-manifests
-        configMap:
-          name: terraform-manifests
-  backoffLimit: 4
+          volumeMounts:
+            - name: terraform
+              mountPath: /terraform
+            - name: terraform-manifests
+              mountPath: /manifests
+      volumes:
+        - name: terraform
+          emptyDir: { }
+        - name: terraform-manifests
+          configMap:
+            name: terraform-manifests
