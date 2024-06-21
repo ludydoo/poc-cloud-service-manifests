@@ -89,9 +89,7 @@ spec:
                 -backend-config="skip_credentials_validation=${SKIP_CREDENTIALS_VALIDATION}" \
                 -backend-config="skip_requesting_account_id=${SKIP_REQUESTING_ACCOUNT_ID}" \
                 -backend-config="skip_metadata_api_check=${SKIP_METADATA_API_CHECK}" \
-                -backend-config="use_path_style=${USE_PATH_STYLE}"
-              
-              # Apply the terraform manifests
+                -backend-config="use_path_style=${USE_PATH_STYLE}" && \            
               terraform apply -auto-approve \
                 -backend-config="access_key=${ACCESS_KEY}" \
                 -backend-config="secret_key=${SECRET_KEY}" \
