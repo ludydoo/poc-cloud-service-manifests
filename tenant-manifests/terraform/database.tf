@@ -1,11 +1,11 @@
 resource random_password db_password {
-  length  = 64
+  length  = 90
   special = false
 }
 
 resource random_pet db_user {
   length    = 2
-  prefix    = "dbuser-"
+  prefix    = "dbuser"
   separator = "-"
 }
 
