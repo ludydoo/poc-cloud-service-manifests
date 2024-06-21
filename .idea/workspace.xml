@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78df76c9-fb62-4def-ab83-7942e7d96606" name="Changes" comment="poc">
+      <change afterPath="$PROJECT_DIR$/bootstrap/04-minio-operator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minio-operator/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minio-operator/subscription.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tenant-manifests/templates/terraform-manifests.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tenant-manifests/terraform/database.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tenant-manifests/terraform/hack/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tenant-manifests/terraform/terraform.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tenant-manifests/terraform/variables.tf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-service/03-route.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-service/03-route.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,25 +25,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ludydoo"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ludydoo&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ludydoo/poc-cloud-service-manifests.git",
-    "accountId": "184dc6a3-d907-45a3-8c11-999f6c38bb9b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ludydoo/poc-cloud-service-manifests.git&quot;,
+    &quot;accountId&quot;: &quot;184dc6a3-d907-45a3-8c11-999f6c38bb9b&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2i5zVgUUMe3Vg5li1hrmPFJdql4" />
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
@@ -48,11 +56,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/anon/github.com/ludydoo/poc-cloud-service-manifests/cloud-service",
+    "last_opened_file_path": "/Users/anon/github.com/ludydoo/poc-cloud-service-manifests/bootstrap",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
@@ -60,9 +69,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bootstrap" />
       <recent name="$PROJECT_DIR$/cloud-service" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/bootstrap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tenant-manifests" />

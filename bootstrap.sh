@@ -19,19 +19,17 @@ spec:
     namespace: default
 EOF
 
-# Create namespaces
-if [ -z "$(oc get ns cloud-service-ci -o name)" ]; then
-  oc create ns cloud-service-ci
-fi
+function create_namespaces() {
+  for ns in "$@"; do
+    if [ -z "$(oc get ns "$ns" -o name)" ]; then
+      oc create ns "$ns"
+    fi
+    # This grants permissions to ArgoCD to deploy applications to these namespaces
+    oc label ns "$ns" argocd.argoproj.io/managed-by=openshift-gitops
+  done
+}
 
-if [ -z "$(oc get ns cloud-service -o name)" ]; then
-  oc create ns cloud-service
-fi
-
-# Label namespaces managed by ArgoCD
-# This grants permissions to ArgoCD to deploy applications to these namespaces
-oc label ns cloud-service-ci argocd.argoproj.io/managed-by=openshift-gitops
-oc label ns cloud-service argocd.argoproj.io/managed-by=openshift-gitops
+create_namespaces cloud-service-ci cloud-service minio-operator
 
 # Create webhook secrets
 if [ -z "$(oc get secret -n cloud-service-ci generic-webhook-secret -o name)" ]; then
