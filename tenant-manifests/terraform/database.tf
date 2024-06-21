@@ -18,6 +18,6 @@ resource kubernetes_secret db_secret {
     POSTGRES_PASSWORD = random_password.db_password.result
     POSTGRES_USER     = random_pet.db_user.id
     POSTGRES_DB       = "postgres"
-    DSN               = "postgres://$(kubernetes_service.postgres.metadata.0.name):5432/postgres?sslmode=disable"
+    DSN               = "postgres://${random_pet.db_user.id}:${random_password.db_password.result}@db.${var.namespace}.svc.cluster.local:5432/postgres?sslmode=disable"
   }
 }
